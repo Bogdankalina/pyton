@@ -7,26 +7,42 @@ class Student:
         self.progres = 0
         self.gladness = 50
         self.alive = True
+        self.energy = 30
 
     def to_study(self):
         print("Я навчаюсь")
-        self.progres += 0.1
+        self.progres += 1
         self.gladness -= 3
+        self.energy -= 2
+
+    def play_game(self):
+        print("Я пішов грати")
+        self.progres -= 0.1
+        self.gladness += 5
+        self.energy -= 2
+
+    def go_park(self):
+        print("Я пішов в парк")
+        self.progres -= 0.1
+        self.gladness += 3
+        self.energy -= 1
 
     def to_sleep(self):
         print("Я пішов спати")
-        self.progres += 0.02
+        self.progres += 0.1
         self.gladness += 3
+        self.energy += 5
 
     def to_chill(self):
         print("Я відпочиваю")
         self.gladness += 5
-        self.progres -= 0.1
+        self.progres -= 0.2
+        self.energy += 4
 
     def info(self):
         print(f"Рівень навчання {self.progres}")
         print(f"Рівень задоволення {self.gladness}")
-
+        print(f"Рівень енергії{self.energy}")
 
     def is_alive(self):
         if self.progres > 10:
@@ -39,6 +55,8 @@ class Student:
             print("У мене депресія")
             self.alive = False
 
+        if self.energy <= 5:
+            print("Я дуже устав")
 
     def live(self, day):
         print(f"День{day} з життя {self.name}")
@@ -50,8 +68,11 @@ class Student:
             self.to_sleep()
         elif choice == 3:
             self.to_chill()
+        choice2 = random.randint(1, 20)
+        if choice2 == 20:
+            self.func()
         self.info()
-        self.alive()
+        self.is_alive()
 
 
 
